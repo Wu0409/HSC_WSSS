@@ -50,6 +50,7 @@ The paper can be downloaded in `paper` folder.
 ```
 python train_voc.py  \
   --data_root $your_voc_image_data_root(VOC2012/images/JPEGImages) \
+  --saliency_root $your_saliency_root \
   --session_name $your_session_name
 ```
 
@@ -57,7 +58,7 @@ python train_voc.py  \
 
 * `--work_dir`: inference saving directory (default: `./exps`)
 
-**NOTE:** Our tain model can be downloaded [here (HSC_eps_v2.pth)]([HSC_eps_v2.pth](https://1drv.ms/u/s!As-yzQ0hGhUXiL026T2ZqmbId1w7vg?e=PMxV89)).
+**NOTE:** Our tain model can be downloaded [here (HSC_eps_v2.pth)](https://1drv.ms/u/s!As-yzQ0hGhUXiL026T2ZqmbId1w7vg?e=PMxV89).
 
 #### 2. Infer CAM with CRF.
 
@@ -66,7 +67,8 @@ Download the our trained model (HSC_eps_v2.pth) or train from scratch, set ```--
 ```
 python inference.py \
   --weights $your_trained_model_weight \ 
-  --infer_list $[voc12/val.txt | voc12/train.txt | voc12/train_aug.txt] \
+  --img_root $your_voc_image_data_root(VOC2012/images/JPEGImages) \
+  --infer_list $[data/voc12/val.txt | data/voc12/train.txt | data/voc12/train_aug.txt] \
   --n_gpus 1 \
   --n_processes_per_gpu 1 \
   --crf_t 8 \
@@ -75,14 +77,14 @@ python inference.py \
 
 **Optional Parameters:**
 
-* `--thr`: the background CAM threshold (default: 0.22) *****
+* `--thr`: the background CAM threshold (default: 0.22) *
 * `--work_dir`: inference saving directory (default: exps)
 * `--cam_png`: output cam (.png) directory  (default: work_dir/cam_png)
 * `--cam_npy`: output cam (.npy) directory (default: work_dir/cam_npy)
 
 **NOTE:** 
 
-* *****The inference script will also generate the pseudo-label (.png) with the fixed background threshold (default: 0.22). Your can directly evaluate them in the next step of CASE #1. 
+* *The inference script will also generate the pseudo-label (.png) with the fixed background threshold (default: 0.22). Your can directly evaluate them in the next step of CASE #1. 
 * You can set `n_gpus=N` if you have multiple gpus for inference. 
 * You can adjust the `n_processes_per_gpu` to boost the inference time (<u>if GPU memory is sufficient</u>)
 * The CAM (.png) and CAM (.npy) of <u>the train set (evaluate)</u> and <u>trainaug set (train the segmentation model)</u> can be downloaded [here (cam_inference)](https://1drv.ms/f/s!As-yzQ0hGhUXiL0zgK4X7vILCcfhjA?e=wYuvOI).
@@ -93,6 +95,7 @@ python inference.py \
 
 ```
 python eval.py \
+	--gt_dir $your_voc_gt_dir (VOC2012/SegmentationClassAug) \
 	--predict_dir $your_cam_png_dir \
 	--logfile $your_log_file_name
 	--comment $your_comment \
@@ -104,9 +107,9 @@ python eval.py \
 
 ```
 python eval.py \
-  --list VOC2012/ImageSets/Segmentation/$[val.txt | train.txt] \
   --predict_dir $your_result_dir \
   --gt_dir VOC2012/SegmentationClass \
+  --logfile $your_log_file_name
   --comment $your_comments \
   --type $[npy | png] \
   --curve True
@@ -121,15 +124,13 @@ python eval.py \
 
 ### Step2: Training refinment network to refine pseudo-labels.
 
-***NO additional post refinement stage is employed in HSC with EPS baseline.***
+>  ***NO additional post refinement stage is employed in HSC with EPS baseline.***
 
 
 
 ### Step3: Segmentation training with DeepLab
 
-We borrow the segmentation repo from https://github.com/YudeWang/semantic-segmentation-codebase. 
-
-The modified segmentation scripts are in `segmentation` folder. You can follow the following guide to finish Step 3.
+>  We borrow the segmentation repo from https://github.com/YudeWang/semantic-segmentation-codebase. The modified segmentation scripts are in `segmentation` folder. You can follow the following guide to finish Step 3.
 
 #### 1. Preparation.
 
@@ -163,11 +164,13 @@ Check the path of the trained model `config_dict['TEST_CKPT']` in `config.py` (L
 python test.py
 ```
 
-For test set evaluation, you need to download test set images and submit the segmentation results (with color mapping) to the official eval server.
+**NOTE:** 
 
-Here is the official evaluation result of HSC on the VOC test set: http://host.robots.ox.ac.uk/anonymous/11DHLZ.html
+* For test set evaluation, you need to download test set images and submit the segmentation results (with color mapping) to the official eval server.
 
-**NOTE:** we provide the predictions of the *val* set and *test* set [here](https://1drv.ms/f/s!As-yzQ0hGhUXiL08wy7TQlEvndVhww?e=s1yzRk).
+* Here is the official evaluation result of HSC on the VOC test set: http://host.robots.ox.ac.uk/anonymous/11DHLZ.html
+
+* we provide the predictions of the *val* set and *test* set [here](https://1drv.ms/f/s!As-yzQ0hGhUXiL08wy7TQlEvndVhww?e=s1yzRk).
 
 
 
