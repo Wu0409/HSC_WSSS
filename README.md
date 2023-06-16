@@ -1,7 +1,5 @@
 # Hierarchical Semantic Contrast
 
-## Overview
-
 The Pytorch implementation of *Hierarchical Semantic Contrast* for weakly supervised semantic segmentation, IJCAI 2023.
 
 The paper can be downloaded in `paper` folder.
