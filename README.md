@@ -7,10 +7,12 @@ The paper can be downloaded in `paper` folder.
 ![image](https://github.com/Wu0409/HSC_WSSS/blob/main/paper/overview.png)
 
 <div align="center">
-<b>Visualization</b>. <i>Left:</i> CAM of Boat. <i>Right:</i> CAM of Person.
+<b>Visualization</b>
 <br>
-  <img width="45%" alt="Boat" src="https://github.com/Wu0409/HSC_WSSS/blob/main/paper/boat.gif">
-  <img width="45%" alt="Person" src="https://github.com/Wu0409/HSC_WSSS/blob/main/paper/person.gif">
+  <img width="30%" alt="Boat" src="https://github.com/Wu0409/HSC_WSSS/blob/main/paper/boat.gif">
+  <img width="30%" alt="Person" src="https://github.com/Wu0409/HSC_WSSS/blob/main/paper/person.gif">
+  <img width="30%" alt="Person" src="https://github.com/Wu0409/HSC_WSSS/blob/main/paper/person1.gif">
+
 
 </div>
 
