@@ -2,7 +2,7 @@
 
 The Pytorch implementation of *Hierarchical Semantic Contrast* for weakly supervised semantic segmentation, IJCAI 2023.
 
-The paper can be downloaded in `paper` folder.
+The paper can be downloaded in `paper` folder or [https://www.ijcai.org/proceedings/2023/0171.pdf](https://www.ijcai.org/proceedings/2023/0171.pdf)
 
 ![image](https://github.com/Wu0409/HSC_WSSS/blob/main/paper/overview.png)
 
