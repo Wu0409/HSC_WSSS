@@ -207,9 +207,11 @@ We sincerely thank [Ye Du et al.](https://github.com/usr922/wseg) and [Yude Wang
 
 ```
 @inproceedings{wu2023hierarchical,
-  title={Hierarchical Semantic Contrast for Weakly Supervised Semantic Segmentation},
-  author={Wu, Yuanchen and Li, Xiaoqiang and Dai, Songmin and Li, Jide and Liu, Tong and Xie, Shaorong},
-  booktitle={IJCAI},
-  year={2023}
+  title     = {Hierarchical Semantic Contrast for Weakly Supervised Semantic Segmentation},
+  author    = {Wu, Yuanchen and Li, Xiaoqiang and Dai, Songmin and Li, Jide and Liu, Tong and Xie, Shaorong},
+  booktitle = {Proceedings of the Thirty-Second International Joint Conference on
+               Artificial Intelligence, {IJCAI-23}},
+  pages     = {1542--1550},
+  year      = {2023},
 }
 ```
