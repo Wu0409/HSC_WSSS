@@ -2,6 +2,9 @@
 
 The Pytorch implementation of *Hierarchical Semantic Contrast* for weakly supervised semantic segmentation, IJCAI 2023.
 
+	
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/hierarchical-semantic-contrast-for-weakly/weakly-supervised-semantic-segmentation-on-1)](https://paperswithcode.com/sota/weakly-supervised-semantic-segmentation-on-1?p=hierarchical-semantic-contrast-for-weakly)
+
 The paper can be downloaded in `paper` folder or [https://www.ijcai.org/proceedings/2023/0171.pdf](https://www.ijcai.org/proceedings/2023/0171.pdf)
 
 ![image](https://github.com/Wu0409/HSC_WSSS/blob/main/paper/overview.png)
